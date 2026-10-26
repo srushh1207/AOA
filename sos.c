@@ -1,20 +1,29 @@
-//SoS
+// SoS
 #include <stdio.h>
 
-int a[20], n, target;
+int a[20], n, target, x[20];
 
 void subset(int i, int sum)
 {
     if (sum == target)
     {
-        printf("Subset found\n");
+        printf("Subset found: ");
+        for (int j = 0; j < i; j++)
+        {
+            if (x[j] == 1)
+                printf("%d ", a[j]);
+        }
+        printf("\n");
         return;
     }
 
     if (i == n || sum > target)
         return;
 
+    x[i] = 1;
     subset(i + 1, sum + a[i]);
+
+    x[i] = 0;
     subset(i + 1, sum);
 }
 
