@@ -1,4 +1,4 @@
-//minmax
+
 #include <stdio.h>
 
 int a[100];
@@ -31,8 +31,15 @@ void minmax(int low, int high, int *min, int *max)
         minmax(low, mid, &min1, &max1);
         minmax(mid + 1, high, &min2, &max2);
 
-        *min = (min1 < min2) ? min1 : min2;
-        *max = (max1 > max2) ? max1 : max2;
+        if (min1 < min2)
+            *min = min1;
+        else
+            *min = min2;
+
+        if (max1 > max2)
+            *max = max1;
+        else
+            *max = max2;
     }
 }
 
